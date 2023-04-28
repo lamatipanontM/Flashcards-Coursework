@@ -63,7 +63,19 @@ try {
    SetID INT(10),
    PRIMARY KEY(FolderID, SetID))");
    $stmt6->execute();
-   $stmt6->closeCursor(); 
+   $stmt6->closeCursor();
+   
+#create table which runs the test
+   $stmt7 = $conn->prepare("DROP TABLE IF EXISTS TblTests; 
+   CREATE TABLE TblTests
+   (TestTaken INT(100) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+   TestID INT(100),
+   UserID INT(10),
+   SetID INT(10),
+   TimeStart DATETIME,
+   TimeFinish DATETIME)");
+   $stmt7->execute();
+   $stmt7->closeCursor(); 
 
 #Inserting test data for users table
     $stmt9 = $conn->prepare("INSERT INTO TblUsers
