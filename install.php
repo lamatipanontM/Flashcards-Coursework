@@ -85,6 +85,14 @@ try {
     $stmt9->execute();
     $stmt9->closeCursor();
 
+#Inserting test data for Folders table
+    $stmt9 = $conn->prepare("INSERT INTO TblFolders
+    (FolderID,FolderName,FolderDescription)VALUES
+    (NULL,'Computer Science','Very fun'),
+    (NULL,'Biology','LIFEE')");
+    $stmt9->execute();
+    $stmt9->closeCursor();
+
 }
 catch(PDOException $e)
 {
