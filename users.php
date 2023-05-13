@@ -6,7 +6,7 @@
 
     </head>
     <body>
-
+<!-- Creates a form for the user to sign up -->
         <form action="addusers.php" method = "post">
             Email:<input type="text" name= "Email"><br>
             Username:<input type="text" name= "Username"><br>
