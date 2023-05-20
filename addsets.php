@@ -1,6 +1,6 @@
 <?php
 
-//header('Location: sets.php');
+header('Location: sets.php');
 try{
 	include_once('connection.php');
 	array_map("htmlspecialchars", $_POST);

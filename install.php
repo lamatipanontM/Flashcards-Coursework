@@ -93,6 +93,23 @@ try {
     $stmt9->execute();
     $stmt9->closeCursor();
 
+#Inserting test data for Sets table
+    $stmt10 = $conn->prepare("INSERT INTO TblSets
+    (SetID,SetName,SetDescription)VALUES
+    (NULL,'Primary Storage','RAM ROM etc'),
+    (NULL,'Cell Structures','Eukaryotes')");
+    $stmt10->execute();
+    $stmt10->closeCursor();
+
+#Inserting test data for linking set and folder table
+    $stmt11 = $conn->prepare("INSERT INTO Tblfoldercontent
+    (FolderID,SetID)VALUES
+    ('1','1'),
+    ('2','2')");
+    $stmt11->execute();
+    $stmt11->closeCursor();
+
+
 }
 catch(PDOException $e)
 {
