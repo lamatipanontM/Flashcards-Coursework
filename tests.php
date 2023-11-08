@@ -22,6 +22,7 @@
             echo('<option value='.$row["SetID"].'>'.$row['SetName'].'</option>');
         }
         ?>
+
         </select>
         <input type="submit" value="Confirm">
     </form>
