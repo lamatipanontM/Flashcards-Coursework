@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
     <head>
         <link rel="stylesheet" href="styles.css">
@@ -10,7 +11,7 @@
 <script>
     function loadPage(page, value) {
       // Get the div element where the page will be loaded.
-      var div = document.getElementById("page-container");
+      var div = document.getElementById("box");
 
       // Create a new XMLHttpRequest object.
       var xhr = new XMLHttpRequest();
@@ -32,15 +33,11 @@
       xhr.send();
     }
   </script>
-    <select id="page-selector" onchange="loadPage('flipcard.php', this.value)">
-    <option disabled selected value> -- select an option -- </option> # forces selection from list
-    <option value=1>Admins</option>
-    <option value=0>Users</option>
-   
-  </select>
+  
 
-  <div id="page-container"></div>
-<button onclick=>
+
+
+
     <?php
     session_start();
     //print_r($_SESSION["deck"]);
@@ -51,14 +48,19 @@
         //echo("<br>");
     //}
     $cardno=rand(0,2);
-    print_r($_SESSION);
+    #print_r($_SESSION);
     $card = $_SESSION["deck"][$cardno][0];
-    print($card);
+    print("<h1>".$card."</h1><br>");
+   ?>
+   
+    <button value=<?php echo $cardno; ?> onclick="loadPage('flipcard.php', this.value)">
+    <?php
+    print("FLIP");
     ##print_r($deck[0]);
 
 
         ?>
-
+</button>
         
 </script>
 
