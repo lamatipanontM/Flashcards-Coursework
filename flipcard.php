@@ -4,7 +4,17 @@
 
 <?php
 session_start();
+if (!isset($_SESSION["side"])){
+    $_SESSION["side"]=1;
+}
+if ($_SESSION["side"]==0){
+    $_SESSION["side"]=1;}
+else{
+    $_SESSION["side"]=0;
+}
+
 $q=$_GET["value"];
+echo($q);
     //print_r($_SESSION["deck"]);
 
     //$deck = $_SESSION["deck"];
@@ -13,11 +23,11 @@ $q=$_GET["value"];
      //   echo("<br>");
     //}
    
-    $card = $_SESSION["deck"][$q][1];
+    $card = $_SESSION["deck"][$q][$_SESSION["side"]];
     print("<h1>".$card."</h1><br>");
     ##print_r($deck[0]);
 ?>
-<button onclick="history.back()">Go Back</button>
+<button onclick="location.href='flash.php'" type="button">back</button>
 
     </body>
     </html>

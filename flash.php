@@ -48,11 +48,20 @@
         //echo("<br>");
     //}
     $cardno=rand(0,2);
+    $cardno=1;
     #print_r($_SESSION);
     $card = $_SESSION["deck"][$cardno][0];
-    print("<h1>".$card."</h1><br>");
-   ?>
+   # print("<h1>".$card."</h1><br>");
+    #echo ($card);
+   ?><script>
+     var cardno = "<?php echo $cardno; ?>";
+    window.onload = function() {
+      loadPage('flipcard.php', cardno);
+};
    
+   
+   </script>
+   <br><br><br><br><br><br><br><br>
     <button value=<?php echo $cardno; ?> onclick="loadPage('flipcard.php', this.value)">
     <?php
     print("FLIP");
