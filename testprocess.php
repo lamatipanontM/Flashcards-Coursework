@@ -29,9 +29,6 @@
             $card=array();
             array_push($card,$row["term"],$row["def"]);
             array_push($_SESSION["deck"],$card);
-        // echo($row["Term"]."<br>");
-            //print_r($_POST); 
-            //load all cards into an array $deck=array(array("bob","is his name"),array("term","definition"))
             echo("<h1>".$row["term"]."</h1>");
         
         }
@@ -50,5 +47,7 @@
         //echo($card[0]."<br>");
     //  echo($card[1]);
     //}
-
+        // echo($row["Term"]."<br>");
+            //print_r($_POST); 
+            //load all cards into an array $deck=array(array("bob","is his name"),array("term","definition"))
     ?>

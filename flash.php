@@ -33,48 +33,48 @@
       xhr.send();
     }
   </script>
-  
-
-
 
 
     <?php
     session_start();
-    //print_r($_SESSION["deck"]);
 
-    //$deck = $_SESSION["deck"];
-    //foreach ($deck as $card){
-       // echo($card[0]."-".$card[1]);
-        //echo("<br>");
-    //}
-    $cardno=rand(0,2);
-    $cardno=1;
-    #print_r($_SESSION);
-    $card = $_SESSION["deck"][$cardno][0];
-   # print("<h1>".$card."</h1><br>");
-    #echo ($card);
-   ?><script>
-     var cardno = "<?php echo $cardno; ?>";
+    $s=$_GET["value"];
+    echo($s);
+
+    $lenght =(count($_SESSION["deck"]) - 1);
+
+    function randomGen($min, $max, $quantity) {//random number gen (non repeat)
+      $numbers = range($min, $max);
+      shuffle($numbers);
+  
+      return array_slice($numbers, 0, $quantity);
+  }
+  
+    $cardno= (randomGen(0,$lenght,1)); //actual generate
+
+    $randomcard = intval($cardno); //conversion from array to number
+    $card = $_SESSION["deck"][$randomcard][0]; // select the set??
+   # $_SESSION["side"]=0;
+   ?>
+   
+   <script>
+    
+    var cardno = "<?php echo $randomcard; ?>";
     window.onload = function() {
-      loadPage('flipcard.php', cardno);
+      
+    loadPage('flipcard.php', cardno);
 };
    
-   
+
+    
    </script>
-   <br><br><br><br><br><br><br><br>
-    <button value=<?php echo $cardno; ?> onclick="loadPage('flipcard.php', this.value)">
-    <?php
-    print("FLIP");
-    ##print_r($deck[0]);
+   
 
+    
 
-        ?>
-</button>
-        
-</script>
 
 </div>
-
+<button onclick="reload()" type="button">next</button>
 
 
 
