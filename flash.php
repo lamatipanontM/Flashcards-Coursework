@@ -37,29 +37,41 @@
 
     <?php
     session_start();
+    if(isset($_POST['add'])){
+     if ($_SESSION['cardno']==$_SESSION["length"]){
+      $_SESSION['cardno']=-1;
 
-    $s=$_GET["value"];
-    echo($s);
+     } 
+      $_SESSION['cardno']++;
+      $_SESSION["side"]=1;
+ }
+
+    #$s=$_GET["value"];
+    #echo($s);
 
     $lenght =(count($_SESSION["deck"]) - 1);
+    $_SESSION["length"]=(count($_SESSION["deck"]) - 1);
 
-    function randomGen($min, $max, $quantity) {//random number gen (non repeat)
-      $numbers = range($min, $max);
-      shuffle($numbers);
+    #function randomGen($min, $max, $quantity) {//random number gen (non repeat)
+    #  $numbers = range($min, $max);
+    #  shuffle($numbers);
+      
   
-      return array_slice($numbers, 0, $quantity);
-  }
+    #  return array_slice($numbers, 0, $quantity);
+  #}
   
-    $cardno= (randomGen(0,$lenght,1)); //actual generate
+    #$cardno= (randomGen(0,$lenght,1)); //actual generate
 
-    $randomcard = intval($cardno); //conversion from array to number
-    $card = $_SESSION["deck"][$randomcard][0]; // select the set??
+    #$randomcard = intval($cardno); //conversion from array to number
+    #$card = $_SESSION["deck"][$randomcard]; // select the set??
    # $_SESSION["side"]=0;
+
    ?>
    
    <script>
     
-    var cardno = "<?php echo $randomcard; ?>";
+    var cardno = "<?php echo $_SESSION["cardno"]; ?>";
+    
     window.onload = function() {
       
     loadPage('flipcard.php', cardno);
@@ -74,7 +86,9 @@
 
 
 </div>
-<button onclick="reload()" type="button">next</button>
+<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
+<input type="submit" name="add" value="Next Card" />
+</form>
 
 
 

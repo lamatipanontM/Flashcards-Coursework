@@ -41,6 +41,10 @@
         echo "error".$e->getMessage();
     }
     $conn=null;
+    
+    shuffle($_SESSION["deck"]);
+   $_SESSION["cardno"]=0;
+   $_SESSION["side"]=1;
     //print_r($deck);
     //echo($deck[2][0]);
     //foreach ($deck as $card){
