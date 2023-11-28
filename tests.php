@@ -24,7 +24,8 @@
         ?>
 
         </select>
-        <input type="submit" value="Confirm">
+        <input type="submit"  id="btnSubmit" name="btnSubmit" value="Learn">
+        <input type="submit" id="btnDelete" name="btnDelete" value="Write">
     </form>
         
     </div>

@@ -9,7 +9,13 @@
     <body>
 <div id="box">
     <?php
-    header('Location: flash.php');
+    print_r($_POST);
+    if (isset($_POST["btnSubmit"])){
+        header('Location: flash.php');
+      } else if (isset($_POST["btnDelete"])){
+        header('Location: write.php');
+      }
+    
     try{
         session_start();
         include_once('connection.php');

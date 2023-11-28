@@ -83,12 +83,12 @@
    
 
     
-
-
 </div>
-<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
+
+<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" type="button">
 <input type="submit" name="add" value="Next Card" />
 </form>
+
 
 
 
