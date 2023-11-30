@@ -10,9 +10,9 @@
 <div id="box">
     <?php
     print_r($_POST);
-    if (isset($_POST["btnSubmit"])){
+    if (isset($_POST["learn"])){
         header('Location: flash.php');
-      } else if (isset($_POST["btnDelete"])){
+      } else if (isset($_POST["write"])){
         header('Location: write.php');
       }
     
@@ -51,13 +51,5 @@
     shuffle($_SESSION["deck"]);
    $_SESSION["cardno"]=0;
    $_SESSION["side"]=1;
-    //print_r($deck);
-    //echo($deck[2][0]);
-    //foreach ($deck as $card){
-        //echo($card[0]."<br>");
-    //  echo($card[1]);
-    //}
-        // echo($row["Term"]."<br>");
-            //print_r($_POST); 
-            //load all cards into an array $deck=array(array("bob","is his name"),array("term","definition"))
+
     ?>
