@@ -40,3 +40,14 @@ button {
     padding: 15px 32px;
 
 }
+
+input [type=submit]{
+    background-color: aquamarine;
+    padding: 15px 32px;
+
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  

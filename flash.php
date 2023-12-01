@@ -57,7 +57,7 @@
    </script>
 </div>
 
-<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" type="button">
+<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
 <input type="submit" name="add" value="Next Card" />
 </form>
 
