@@ -1,14 +1,24 @@
 <?php
-
+session_start();
 header('Location: sets.php');
 try{
 	include_once('connection.php');
 	array_map("htmlspecialchars", $_POST);
 	print_r($_POST);
+	switch($_POST["status"]){
+		case "Private":
+			$role=0;
+			break;
+		case "Public":
+			$role=1;
+			break;
 
+	}
 //insert set detail into set table
-	$stmt = $conn->prepare("INSERT INTO TblSets(SetID,SetName,SetDescription)VALUES (NULL,:SetName,:SetDescription)");
+	$stmt = $conn->prepare("INSERT INTO TblSets(SetID,SetName,UserID,Public,SetDescription)VALUES (NULL,:SetName,:UserID,:status,:SetDescription)");
 	$stmt->bindParam(':SetName', $_POST["SetName"]);
+	$stmt->bindParam(':UserID', $_SESSION['CurrentUser']);
+	$stmt->bindParam(':status', $role);
     $stmt->bindParam(':SetDescription', $_POST["SetDescription"]);
 	$stmt->execute();
 

@@ -18,9 +18,9 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC))
     $attempt= $_POST['password'];
     //Check password - directs to login page if incorrect
     if(password_verify($attempt,$hashed)){
-        $_SESSION['name']=$row['Username'];
+        $_SESSION['CurrentUser']=$row['UserID'];
         if(!isset($_SESSION['backURL'])){
-            $backURL= "/";
+            $backURL= "homepage.php";
         }else{
             $backURL=$_SESSION['backURL'];
         }

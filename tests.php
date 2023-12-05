@@ -13,8 +13,10 @@
         Set:<select name = "Sets"><br>
 
         <?php
+        session_start();
         include_once('connection.php');
-        $stmt = $conn->prepare("SELECT * FROM TblSets");
+        $stmt = $conn->prepare("SELECT * FROM TblSets WHERE UserID=:user or Public=1");
+        $stmt->bindParam(':user', $_SESSION["CurrentUser"]);
         $stmt->execute();
 
         while($row = $stmt ->fetch(PDO::FETCH_ASSOC))

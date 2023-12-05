@@ -18,7 +18,7 @@ try {
     (UserID INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     Email VARCHAR(50) NOT NULL,
     Username VARCHAR(120) NOT NULL,
-    Password VARCHAR(50) NOT NULL)");
+    Password VARCHAR(200) NOT NULL)");
     $stmt->execute();
     $stmt->closeCursor();
 #create sets table
@@ -26,6 +26,8 @@ try {
     CREATE TABLE TblSets
     (SetID INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     SetName VARCHAR(50) NOT NULL,
+    UserID INT(6) NOT NULL,
+    Public INT(0) NOT NULL DEFAULT 0,
     SetDescription VARCHAR(100) NOT NULL)");
     $stmt2->execute();
     $stmt2->closeCursor();
@@ -47,16 +49,16 @@ try {
     $stmt4->execute();
     $stmt4->closeCursor(); 
 
-#create flashards table
+/* #create flashards table
     $stmt5 = $conn->prepare("DROP TABLE IF EXISTS TblFolders; 
     CREATE TABLE TblFolders
     (FolderID INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     FolderName VARCHAR(50) NOT NULL,
     FolderDescription VARCHAR(100) NOT NULL)");
     $stmt5->execute();
-    $stmt5->closeCursor();
+    $stmt5->closeCursor(); */
 
-#create table which connects sets and folder
+/* #create table which connects sets and folder
    $stmt6 = $conn->prepare("DROP TABLE IF EXISTS TblFolderContent; 
    CREATE TABLE TblFolderContent
    (FolderID INT(10),
@@ -64,35 +66,37 @@ try {
    PRIMARY KEY(FolderID, SetID))");
    $stmt6->execute();
    $stmt6->closeCursor();
-   
+    */
 #create table which runs the test
-   $stmt7 = $conn->prepare("DROP TABLE IF EXISTS TblTests; 
-   CREATE TABLE TblTests
-   (TestTaken INT(100) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-   TestID INT(100),
-   UserID INT(10),
-   SetID INT(10),
+   $stmt7 = $conn->prepare("DROP TABLE IF EXISTS TblUserStudies; 
+   CREATE TABLE TblUserStudies
+   (UserID INT(6) NOT NULL,
+   SetID INT(10) NOT NULL,
+   Visits INT(10) DEFAULT 0,
    TimeStart DATETIME,
-   TimeFinish DATETIME)");
+   TimeFinish DATETIME,
+   PRIMARY KEY(UserID, SetID))");
    $stmt7->execute();
    $stmt7->closeCursor(); 
 
 #Inserting test data for users table
+    $hashed_password = password_hash("password", PASSWORD_DEFAULT);
     $stmt9 = $conn->prepare("INSERT INTO TblUsers
     (UserID,Username,Email,Password)VALUES
-    (NULL,'Focus.L','lamatipanont.m@oundleschool.org.uk','123'),
-    (NULL,'Liv.X','Liv.xu@gmail.com','321')");
+    (NULL,'Focus.L','lamatipanont.m@oundleschool.org.uk',:pword),
+    (NULL,'Liv.X','Liv.xu@gmail.com',:pword)");
+    $stmt9->bindParam(':pword', $hashed_password);
     $stmt9->execute();
     $stmt9->closeCursor();
 
-#Inserting test data for Folders table
-    $stmt9 = $conn->prepare("INSERT INTO TblFolders
+# Inserting test data for Folders table
+    /* $stmt9 = $conn->prepare("INSERT INTO TblFolders
     (FolderID,FolderName,FolderDescription)VALUES
     (NULL,'Computer Science','Very fun'),
     (NULL,'Biology','LIFEE')");
     $stmt9->execute();
-    $stmt9->closeCursor();
-
+    $stmt9->closeCursor(); */
+ 
 #Inserting test data for Sets table
     $stmt10 = $conn->prepare("INSERT INTO TblSets
     (SetID,SetName,SetDescription)VALUES
@@ -101,13 +105,34 @@ try {
     $stmt10->execute();
     $stmt10->closeCursor();
 
+    $stmt12 = $conn->prepare("INSERT INTO TblCards
+    (CardID,Term,Definition)VALUES
+    (NULL,'Mitochondria','Produces ATP'),
+    (NULL,'Vacuole','A hole in plant cell'),
+    (NULL,'Cell wall','Made of cellulose'),
+    (NULL,'Golgi Body','Package protein'),
+    (NULL,'Lysosome','Contains Lysozymes')");
+    $stmt12->execute();
+    $stmt12->closeCursor();
+
+    $stmt13 = $conn->prepare("INSERT INTO TblSetContent
+    (SetID,CardID)VALUES
+    ('2','1'),
+    ('2','2'),
+    ('2','3'),
+    ('2','4'),
+    ('2','5')");
+    $stmt13->execute();
+    $stmt13->closeCursor();
+
+
 #Inserting test data for linking set and folder table
-    $stmt11 = $conn->prepare("INSERT INTO Tblfoldercontent
+    /* $stmt11 = $conn->prepare("INSERT INTO Tblfoldercontent
     (FolderID,SetID)VALUES
     ('1','1'),
     ('2','2')");
     $stmt11->execute();
-    $stmt11->closeCursor();
+    $stmt11->closeCursor(); */
 
 
 }

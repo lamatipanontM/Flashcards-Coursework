@@ -1,3 +1,10 @@
+
+<?php
+session_start();
+if (!isset( $_SESSION["CurrentUser"])){
+    header('Location: login.php');
+}
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -11,21 +18,11 @@
     <form action="addsets.php" method = "post">
             Name:<input type="text" name= "SetName"><br>
             Description:<input type="text" name= "SetDescription"><br>
-        
-        Folders:<select name = "Folders"><br>
 
-        <?php
-        include_once('connection.php');
-        $stmt = $conn->prepare("SELECT * FROM TblFolders");
-        $stmt->execute();
-
-        while($row = $stmt ->fetch(PDO::FETCH_ASSOC))
-        {
-        
-            echo('<option value='.$row["FolderID"].'>'.$row['FolderName'].'</option>');
-        }
-        ?>
     </select>
+    <input type="radio" name="status" value="Public" checked> Public<br>
+    <input type="radio" name="status" value="Private" checked> Private<br>
+
     <input type="submit" value="Confirm">
     </form>
     </body>
