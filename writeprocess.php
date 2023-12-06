@@ -1,8 +1,10 @@
 <?php
 session_start();
-echo($_POST['definition']);
+echo("Your answer: ".$_POST['definition']."<br>");
 
 $answer = $_SESSION["deck"][$_SESSION['cardno']][1];
+echo("Correct answer: ".$answer);
+echo("<br>");
 
 if($_POST['definition']==$answer){
     echo 'yay';

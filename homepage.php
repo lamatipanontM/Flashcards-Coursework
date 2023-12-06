@@ -22,17 +22,16 @@
           <a class="nav-link" href="tests.php">Test/Learn</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
+          <a class="nav-link" href="logout.php">Logout</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Link</a>
         </li>  
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Dropdown</a>
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Create</a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Link</a></li>
-            <li><a class="dropdown-item" href="#">Another link</a></li>
-            <li><a class="dropdown-item" href="#">A third link</a></li>
+            <li><a class="dropdown-item" href="sets.php">Sets</a></li>
+            <li><a class="dropdown-item" href="cards.php">Cards</a></li>
           </ul>
         </li>
       </ul>

@@ -99,9 +99,9 @@ try {
  
 #Inserting test data for Sets table
     $stmt10 = $conn->prepare("INSERT INTO TblSets
-    (SetID,SetName,SetDescription)VALUES
-    (NULL,'Primary Storage','RAM ROM etc'),
-    (NULL,'Cell Structures','Eukaryotes')");
+    (SetID,SetName,UserID,Public,SetDescription)VALUES
+    (NULL,'Primary Storage',1,1,'RAM ROM etc'),
+    (NULL,'Cell Structures',1,1,'Eukaryotes')");
     $stmt10->execute();
     $stmt10->closeCursor();
 
