@@ -13,9 +13,12 @@
 
 <?php
 session_start();
+echo($_SESSION["length"]);
+echo($_SESSION['cardno']);
 if(isset($_POST['add'])){
- if ($_SESSION['cardno']==$_SESSION["length"]){
+ if ($_SESSION['cardno']==$_SESSION["length"]-1){
   $_SESSION['cardno']=-1;
+  echo("test done");
 
  } 
   $_SESSION['cardno']++;

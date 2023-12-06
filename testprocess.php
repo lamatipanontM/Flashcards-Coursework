@@ -18,6 +18,10 @@
     
     try{
         session_start();
+        if(!isset($_SESSION["Score"]))
+        {
+            $_SESSION["Score"]=0;
+         }
         include_once('connection.php');
         array_map("htmlspecialchars", $_POST);
         

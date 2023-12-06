@@ -79,6 +79,17 @@ try {
    $stmt7->execute();
    $stmt7->closeCursor(); 
 
+#create table which collects score
+   $stmt7 = $conn->prepare("DROP TABLE IF EXISTS Tbltest; 
+   CREATE TABLE Tbltests
+   (UserID INT(6) NOT NULL,
+   SetID INT(10) NOT NULL,
+   Score INT(10) DEFAULT 0,
+   Date DATETIME,
+   PRIMARY KEY(UserID, SetID))");
+   $stmt7->execute();
+   $stmt7->closeCursor(); 
+
 #Inserting test data for users table
     $hashed_password = password_hash("password", PASSWORD_DEFAULT);
     $stmt9 = $conn->prepare("INSERT INTO TblUsers
