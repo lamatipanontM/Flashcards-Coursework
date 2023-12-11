@@ -16,7 +16,7 @@ if (!isset( $_SESSION["CurrentUser"])){
     <body>
 
     <div id="box">
-    <form action="testprocess.php" method = "post">
+    <form action="testprocess.php" method = "POST">
         Set:<select name = "Sets"><br>
 
         <?php

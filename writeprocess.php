@@ -28,20 +28,23 @@ if ($_SESSION['cardno']==$_SESSION["length"]){
 
 
     $date=date_create()->format('Y-m-d H:i:s');
-    print_r($date);
-
 	$stmt = $conn->prepare("INSERT INTO Tbltests(UserID,SetID,Score,Date)VALUES (:userid,:setid,:score,:date)");
 	$stmt->bindParam(':userid', $_SESSION["CurrentUser"]);
-    $stmt->bindParam(':setid', $_POST["Sets"]);
+    $stmt->bindParam(':setid', $_SESSION["setid"]);
     $stmt->bindParam(':score', $_SESSION["Score"]);
     $stmt->bindParam(':date', $date);
 	$stmt->execute();
+
+    $_SESSION["Score"]=0;
     }
 
     catch(PDOException $e)
 {
     echo "error".$e->getMessage();
 }
+
+$_SESSION["Score"]==0;
+header('Location: homepage.php');
 
 }
 

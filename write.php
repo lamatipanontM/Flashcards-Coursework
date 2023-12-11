@@ -15,6 +15,7 @@
 session_start();
 echo($_SESSION["length"]);
 echo($_SESSION['cardno']);
+print_r($_SESSION["setid"]);
 if(isset($_POST['add'])){
  if ($_SESSION['cardno']==$_SESSION["length"]-1){
   $_SESSION['cardno']=-1;
@@ -37,7 +38,7 @@ $card = $_SESSION["deck"][$_SESSION['cardno']][0];
 ?>
 
 <form action ="writeprocess.php" method="POST">
-    Definition:<input type="text" name="definition"><br>
+    Definition:<input oninput="this.value = this.value.toUpperCase()" type="text" name="definition"><br>
         <input type="submit" value="submit">
 </form>
 </body>

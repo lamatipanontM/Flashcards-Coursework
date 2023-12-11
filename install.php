@@ -86,7 +86,7 @@ try {
    SetID INT(10) NOT NULL,
    Score INT(10) DEFAULT 0,
    Date DATETIME,
-   PRIMARY KEY(UserID, SetID))");
+   PRIMARY KEY(UserID, SetID, Date))");
    $stmt7->execute();
    $stmt7->closeCursor(); 
 
@@ -118,11 +118,11 @@ try {
 
     $stmt12 = $conn->prepare("INSERT INTO TblCards
     (CardID,Term,Definition)VALUES
-    (NULL,'Mitochondria','Produces ATP'),
-    (NULL,'Vacuole','A hole in plant cell'),
-    (NULL,'Cell wall','Made of cellulose'),
-    (NULL,'Golgi Body','Package protein'),
-    (NULL,'Lysosome','Contains Lysozymes')");
+    (NULL,'MITOCHONDRIA','PRODUCES ATP'),
+    (NULL,'Vacuole','A HOLE IN PLANT CELL'),
+    (NULL,'Cell wall','MADE OF CELLULOSE'),
+    (NULL,'Golgi Body','PACKAGE PROTEIN'),
+    (NULL,'Lysosome','CONTAINS LYSOZYMES')");
     $stmt12->execute();
     $stmt12->closeCursor();
 

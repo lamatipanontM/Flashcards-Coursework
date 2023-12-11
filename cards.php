@@ -10,7 +10,7 @@
     <!-- Create a form for the user to create a Flashcard -->
     <form action="addcards.php" method = "post">
             Term:<input type="text" name= "Term"><br>
-            Definition:<input type="text" name= "Definition"><br>
+            Definition:<input oninput="this.value = this.value.toUpperCase()" type="text" name= "Definition"><br>
         
         Set:<select name = "Set"><br>
 

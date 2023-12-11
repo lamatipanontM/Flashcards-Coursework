@@ -24,9 +24,6 @@
         <li class="nav-item">
           <a class="nav-link" href="logout.php">Logout</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>  
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Create</a>
           <ul class="dropdown-menu">

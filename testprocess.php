@@ -27,7 +27,8 @@
         
 
         $_SESSION["deck"]=array();
-        
+        $_SESSION["setid"]=$_POST["Sets"];
+        print_r($_POST);
         $stmt1 = $conn->prepare("SELECT tblcards.Term as term, tblcards.Definition as def FROM tblcards
         INNER JOIN tblsetcontent 
         ON tblcards.CardID=tblsetcontent.CardID 
