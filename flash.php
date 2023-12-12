@@ -11,8 +11,9 @@
     </head>
     <body>
     <div class="row">
-  <div class="col"></div>
-  <div class="col">
+    <div class="col-sm-2 col"></div>
+
+  <div class="col-sm-7 col">
   <div id="box">
 <script>
     function loadPage(page, value) {
@@ -65,7 +66,7 @@
 
 </div>
   </div>
-  <div class="col">
+  <div class="col-sm-3 colnext">
   <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
 <button type="submit" name="add" value="Next Card">next</button>
 </form>

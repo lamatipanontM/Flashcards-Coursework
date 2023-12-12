@@ -8,12 +8,25 @@ if (!isset( $_SESSION["CurrentUser"])){
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="styles.css">
+
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+        <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Test Page</title>
 
 
+
+
+    <script>
+  $(function() {
+    $("#navigation").load("navbar.php");
+    });
+    </script>
+
     </head>
     <body>
+    <div id="navigation"></div>
 
     <div id="box">
     <form action="testprocess.php" method = "POST">

@@ -10,27 +10,35 @@
 
     </head>
     <body>
-    <div id="box">
-<?php
-session_start();
-if (!isset($_SESSION["side"])){// make it on the term side
-    $_SESSION["side"]=1;
-}
-if ($_SESSION["side"]==0){
-    $_SESSION["side"]=1;}
-else{
-    $_SESSION["side"]=0;
-}
+    <div class="row">
+        <div class="col-sm-3 col">
+            <button onclick="location.href='flash.php'" type="button">Flip</button>
+        </div>
+        <div class="col-sm-4 col">
+            
+                <?php
+                session_start();
+                if (!isset($_SESSION["side"])){// make it on the term side
+                    $_SESSION["side"]=1;
+                }
+                if ($_SESSION["side"]==0){
+                    $_SESSION["side"]=1;}
+                else{
+                    $_SESSION["side"]=0;
+                }
 
-$q=$_GET["value"];
-echo($q);
-   
-  $card = $_SESSION["deck"][$q][$_SESSION["side"]];
+                $q=$_GET["value"];
+                
+                
+                $card = $_SESSION["deck"][$q][$_SESSION["side"]];
+                    
+                print("<h1>".$card."</h1><br>");
+                ?>
+                
+            </div>
+    </div>
     
-  print("<h1>".$card."</h1><br>");
-?>
-</div>
-<button onclick="location.href='flash.php'" type="button">Flip</button>
+
 
 
 
