@@ -1,6 +1,7 @@
 <?php
-
+// add users - takes the posted value and inserts them into the user table
 header('Location: users.php');
+//connects to database
 try{
 	include_once('connection.php');
 	array_map("htmlspecialchars", $_POST);

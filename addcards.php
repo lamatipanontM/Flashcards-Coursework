@@ -1,5 +1,5 @@
 <?php
-
+// addcards - insert the posted value into the corresponding table
 header('Location: cards.php');
 try{
 	include_once('connection.php');

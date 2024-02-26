@@ -1,14 +1,6 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <link rel="stylesheet" href="styles.css">
-        <title>Test Page</title>
-
-
-    </head>
-    <body>
-<div id="box">
+<!-- Test process takes the values in the set and put them into arrays -->
     <?php
+    //post value to the page depending on option
     print_r($_POST);
     if (isset($_POST["learn"])){
         header('Location: flash.php');
@@ -24,8 +16,7 @@
          }
         include_once('connection.php');
         array_map("htmlspecialchars", $_POST);
-        
-
+        // Put terms and definition of a row into an array called card
         $_SESSION["deck"]=array();
         $_SESSION["setid"]=$_POST["Sets"];
         print_r($_POST);
@@ -37,22 +28,19 @@
         $stmt1 ->execute();
         while ($row = $stmt1->fetch(PDO::FETCH_ASSOC))
         {   
+            // put the arrays of cards into another array
             $card=array();
             array_push($card,$row["term"],$row["def"]);
             array_push($_SESSION["deck"],$card);
             echo("<h1>".$row["term"]."</h1>");
-        
         }
-
-
     }
-
     catch(PDOException $e)
     {
         echo "error".$e->getMessage();
     }
     $conn=null;
-    
+    // shuffle order of cards
     shuffle($_SESSION["deck"]);
    $_SESSION["cardno"]=0;
    $_SESSION["side"]=1;

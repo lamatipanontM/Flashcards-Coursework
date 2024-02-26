@@ -1,6 +1,8 @@
+<!-- Add sets - add the posted value into the corresponding table -->
 <?php
 session_start();
 header('Location: sets.php');
+// connect to database
 try{
 	include_once('connection.php');
 	array_map("htmlspecialchars", $_POST);
@@ -15,7 +17,8 @@ try{
 
 	}
 //insert set detail into set table
-	$stmt = $conn->prepare("INSERT INTO TblSets(SetID,SetName,UserID,Public,SetDescription)VALUES (NULL,:SetName,:UserID,:status,:SetDescription)");
+	$stmt = $conn->prepare("INSERT INTO TblSets(SetID,SetName,UserID,Public,SetDescription)VALUES 
+	(NULL,:SetName,:UserID,:status,:SetDescription)");
 	$stmt->bindParam(':SetName', $_POST["SetName"]);
 	$stmt->bindParam(':UserID', $_SESSION['CurrentUser']);
 	$stmt->bindParam(':status', $role);

@@ -1,10 +1,11 @@
 <?php
+//Server login
   $servername = 'localhost';
   $username = 'root';
   $password= '';
 
 try {
-    #create database if not already exists and connect to it
+    #login to server and create database if not already exists and connect to it
    $conn = new PDO("mysql:host=$servername", $username, $password);
    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
    $sql = "CREATE DATABASE IF NOT EXISTS Flashcards";
@@ -49,24 +50,6 @@ try {
     $stmt4->execute();
     $stmt4->closeCursor(); 
 
-/* #create flashards table
-    $stmt5 = $conn->prepare("DROP TABLE IF EXISTS TblFolders; 
-    CREATE TABLE TblFolders
-    (FolderID INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    FolderName VARCHAR(50) NOT NULL,
-    FolderDescription VARCHAR(100) NOT NULL)");
-    $stmt5->execute();
-    $stmt5->closeCursor(); */
-
-/* #create table which connects sets and folder
-   $stmt6 = $conn->prepare("DROP TABLE IF EXISTS TblFolderContent; 
-   CREATE TABLE TblFolderContent
-   (FolderID INT(10),
-   SetID INT(10),
-   PRIMARY KEY(FolderID, SetID))");
-   $stmt6->execute();
-   $stmt6->closeCursor();
-    */
 #create table which runs the test
    $stmt7 = $conn->prepare("DROP TABLE IF EXISTS TblUserStudies; 
    CREATE TABLE TblUserStudies
@@ -99,14 +82,6 @@ try {
     $stmt9->bindParam(':pword', $hashed_password);
     $stmt9->execute();
     $stmt9->closeCursor();
-
-# Inserting test data for Folders table
-    /* $stmt9 = $conn->prepare("INSERT INTO TblFolders
-    (FolderID,FolderName,FolderDescription)VALUES
-    (NULL,'Computer Science','Very fun'),
-    (NULL,'Biology','LIFEE')");
-    $stmt9->execute();
-    $stmt9->closeCursor(); */
  
 #Inserting test data for Sets table
     $stmt10 = $conn->prepare("INSERT INTO TblSets
@@ -116,6 +91,7 @@ try {
     $stmt10->execute();
     $stmt10->closeCursor();
 
+#inserts flashcard data into Tblcards
     $stmt12 = $conn->prepare("INSERT INTO TblCards
     (CardID,Term,Definition)VALUES
     (NULL,'MITOCHONDRIA','PRODUCES ATP'),
@@ -126,6 +102,7 @@ try {
     $stmt12->execute();
     $stmt12->closeCursor();
 
+#links the data in tblcards to their corresponding sets
     $stmt13 = $conn->prepare("INSERT INTO TblSetContent
     (SetID,CardID)VALUES
     ('2','1'),
@@ -136,21 +113,10 @@ try {
     $stmt13->execute();
     $stmt13->closeCursor();
 
-
-#Inserting test data for linking set and folder table
-    /* $stmt11 = $conn->prepare("INSERT INTO Tblfoldercontent
-    (FolderID,SetID)VALUES
-    ('1','1'),
-    ('2','2')");
-    $stmt11->execute();
-    $stmt11->closeCursor(); */
-
-
 }
 catch(PDOException $e)
 {
     echo $sql . "<br>" . $e->getMessage();
 }
 $conn=Null;
-
 ?>

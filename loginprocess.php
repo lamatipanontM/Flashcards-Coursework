@@ -1,13 +1,11 @@
 <?php
+// Login Process takes in the inputs and checks the validity before starting a session
 session_start();
-echo($_POST['Username']);
-echo($_POST['password']);
-
 //Connects to DB
 include_once("connection.php");
 array_map("htmlspecialchars", $_POST);
 
-//Query with posted Username
+//Query with posted Username. This also checks the validity of the inputs
 $stmt = $conn->prepare("SELECT * FROM tblusers WHERE Username =:Username ;");
 $stmt->bindParam(':Username', $_POST['Username']);
 $stmt->execute();
@@ -16,7 +14,7 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC))
 {
     $hashed= $row['Password'];
     $attempt= $_POST['password'];
-    //Check password - directs to login page if incorrect
+    //Check password validity - directs to login page if incorrect
     if(password_verify($attempt,$hashed)){
         $_SESSION['CurrentUser']=$row['UserID'];
         if(!isset($_SESSION['backURL'])){

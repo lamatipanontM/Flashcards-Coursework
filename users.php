@@ -1,9 +1,8 @@
+<!-- Users - Allows users to input their details and post them to addusers -->
 <!DOCTYPE html>
 <html>
     <head>
-
     <title>Sign Up</title>
-
     </head>
     <body>
 <!-- Creates a form for the user to sign up -->
@@ -15,6 +14,8 @@
         <br>
         <input type="submit" value="Confirm">
         </form>
+        <!-- directs users to login page -->
+        <a href="login.php">If you already have an account click here</a>
 
     </body>
 </html>
