@@ -9,10 +9,20 @@ if (!isset( $_SESSION["CurrentUser"])){
 <html>
     <head>
     <title>Create Set</title>
+    <!-- Validates the input by ensuring that the field is not empty -->
+    <script>
+        function IsEmpty() {
+        if (document.forms['createset'].SetName.value === "" ) {
+            alert("empty");
+            return false;
+        }
+        return true;
+        }
+    </script>
     </head>
     <body>
     <!-- Create a form for the user to create a set -->
-    <form action="addsets.php" method = "post">
+    <form name='createset' action="addsets.php" method = "post">
             Name:<input type="text" name= "SetName"><br>
             Description:<input type="text" name= "SetDescription"><br>
 
@@ -21,7 +31,7 @@ if (!isset( $_SESSION["CurrentUser"])){
     <input type="radio" name="status" value="Public" checked> Public<br>
     <input type="radio" name="status" value="Private" checked> Private<br>
 
-    <input type="submit" value="Confirm">
+    <input onclick="return IsEmpty();" type="submit" value="Confirm">
     </form>
     <button onclick="history.back()">Go Back</button>
     </body>
